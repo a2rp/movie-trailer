@@ -1,3 +1,7 @@
+
+![image](https://github.com/a2rp/movie-trailer/assets/5670738/f57211be-7422-4d5a-b33c-b3de17e0514d)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
