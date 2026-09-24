@@ -1,30 +1,3 @@
-.container {
-    display: flex;
-    justify-content: center;
-    padding: 30px;
-
-    .main {
-        width: 100%;
-        max-width: 1440px;
-
-        .heading {
-            font-size: 20px;
-            font-weight: 900;
-        }
-
-        .form {
-            margin-top: 30px;
-            display: flex;
-            gap: 30px;
-
-            .submitButton {
-                height: 50px;
-                overflow: hidden;
-            }
-        }
-
-        .trailerContainer {
-            margin-top: 30px;
-        }
-    }
-}
+.container { min-height: calc(100vh - 74px); padding: 76px clamp(1rem, 5vw, 5rem) 105px; background: radial-gradient(circle at 82% 15%, rgba(54, 124, 176, 0.2), transparent 34%), #091522; }.main { width: min(1160px, 100%); margin: 0 auto; }.hero { position: relative; min-height: 440px; overflow: hidden; border: 1px solid rgba(160, 198, 232, 0.18); border-radius: 26px; background-position: center; background-size: cover; box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3); }.overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7, 17, 31, 0.98), rgba(7, 17, 31, 0.68) 52%, rgba(7, 17, 31, 0.2)); }.heroContent { position: relative; z-index: 1; max-width: 650px; padding: clamp(2rem, 7vw, 5rem); }.eyebrow { color: #7ac9ff; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.16em; }.hero h1 { margin: 1rem 0 1.2rem; font-size: clamp(3.2rem, 8vw, 7.2rem); line-height: 0.9; letter-spacing: -0.08em; }.hero p { max-width: 530px; color: #b0c3d8; line-height: 1.7; }.heroNote { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 1.4rem; padding: 0.7rem 0.9rem; border: 1px solid rgba(160, 198, 232, 0.2); border-radius: 10px; color: #cde7ff; background: rgba(7, 17, 31, 0.58); font-size: 0.8rem; }.heroNote svg { color: #7ac9ff; }.searchPanel { display: grid; grid-template-columns: minmax(220px, 0.6fr) 1fr; align-items: center; gap: 1.5rem; margin-top: 1.2rem; padding: 1.2rem; border: 1px solid rgba(160, 198, 232, 0.18); border-radius: 18px; background: #0d1d30; }.panelHeading { display: flex; align-items: center; gap: 0.8rem; }.panelHeading > svg { width: 25px; height: 25px; color: #7ac9ff; }.panelHeading h2, .sectionHeading h2 { margin: 0.3rem 0 0; font-size: 1.25rem; }.panelHeading p, .sectionHeading p { margin: 0.35rem 0 0; color: #8fa7bf; font-size: 0.8rem; line-height: 1.6; }.form { display: flex; gap: 0.7rem; }.searchField { display: flex; align-items: center; flex: 1; gap: 0.6rem; min-height: 48px; padding: 0 0.9rem; border: 1px solid rgba(160, 198, 232, 0.22); border-radius: 10px; background: #071321; }.searchField:focus-within { border-color: #7ac9ff; box-shadow: 0 0 0 3px rgba(122, 201, 255, 0.12); }.searchField svg { flex: 0 0 auto; color: #7ac9ff; }.searchField input { width: 100%; min-width: 0; border: 0; outline: 0; color: #fff; background: transparent; }.submitButton { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; min-width: 145px; border: 1px solid #7ac9ff; border-radius: 10px; color: #071321; background: #7ac9ff; font-weight: 800; cursor: pointer; transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; }.submitButton:hover:not(:disabled) { border-color: #fff; background: #abe1ff; box-shadow: 0 0 20px rgba(122, 201, 255, 0.2); }.submitButton:disabled { cursor: wait; opacity: 0.7; }.spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; }.playerSection { margin-top: 5rem; }.sectionHeading { max-width: 650px; }.sectionHeading h2 { margin-top: 0.8rem; font-size: clamp(2rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -0.07em; }.sectionHeading p { font-size: 0.95rem; }.playerFrame { display: grid; min-height: 540px; margin-top: 1.5rem; overflow: hidden; border: 1px solid rgba(160, 198, 232, 0.18); border-radius: 20px; background: #02070d; box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28); }.emptyPlayer { display: grid; align-content: center; justify-items: center; gap: 0.8rem; color: #829bb3; }.emptyPlayer svg { width: 42px; height: 42px; padding: 10px; border: 1px solid #365c82; border-radius: 50%; color: #7ac9ff; }
+@media (max-width: 780px) { .searchPanel { grid-template-columns: 1fr; }.form { flex-direction: column; }.submitButton { min-height: 48px; }.playerFrame { min-height: 420px; } }
+@media (max-width: 520px) { .container { padding-top: 52px; }.hero { min-height: 500px; border-radius: 20px; }.overlay { background: linear-gradient(180deg, rgba(7, 17, 31, 0.84), rgba(7, 17, 31, 0.98)); }.heroContent { padding: 2rem 1.3rem; }.hero h1 { font-size: clamp(3rem, 16vw, 5rem); }.playerSection { margin-top: 4rem; }.playerFrame { min-height: 260px; border-radius: 14px; } }
