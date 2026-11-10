@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FiArrowUp, FiCode, FiCoffee, FiFacebook, FiGithub, FiGlobe, FiHeart, FiLinkedin, FiMail, FiMenu, FiStar, FiX, FiYoutube } from "react-icons/fi";
@@ -23,11 +23,25 @@ const FooterLinks = ({ items }) => <div className="footerLinks">{items.map(({ la
 
 const App = () => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const menuButtonRef = useRef(null);
     const closeMenu = () => setMenuOpen(false);
+    useEffect(() => {
+        if (!menuOpen) return undefined;
+
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setMenuOpen(false);
+                menuButtonRef.current?.focus();
+            }
+        };
+
+        document.addEventListener("keydown", handleKeyDown);
+        return () => document.removeEventListener("keydown", handleKeyDown);
+    }, [menuOpen]);
     return <div className="appShell">
-        <header className="siteHeader"><a className="siteBrand" href="#trailer" onClick={closeMenu}><img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Ashish Ranjan logo" /><span><small>A2RP VIDEO LAB</small><strong>Movie Trailer</strong></span></a><nav className={`siteNav ${menuOpen ? "siteNavOpen" : ""}`} aria-label="Main navigation"><a href="#trailer" onClick={closeMenu}>Find a trailer</a><a href="#player" onClick={closeMenu}>Player</a><a href="#footer" onClick={closeMenu}>Links</a></nav><button className="menuButton" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen}>{menuOpen ? <FiX /> : <FiMenu />}</button></header>
+        <header className="siteHeader"><a className="siteBrand" href="#trailer" onClick={closeMenu}><img src={`${process.env.PUBLIC_URL}/logo.png`} alt="Ashish Ranjan logo" /><span><small>A2RP VIDEO LAB</small><strong>Movie Trailer</strong></span></a><nav id="site-navigation" className={`siteNav ${menuOpen ? "siteNavOpen" : ""}`} aria-label="Main navigation"><a href="#trailer" onClick={closeMenu}>Find a trailer</a><a href="#player" onClick={closeMenu}>Player</a><a href="#footer" onClick={closeMenu}>Links</a></nav><button ref={menuButtonRef} className="menuButton" type="button" onClick={() => setMenuOpen((open) => !open)} aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="site-navigation">{menuOpen ? <FiX /> : <FiMenu />}</button></header>
         <main id="trailer" className="siteMain"><MovieTrailer /></main>
-        <footer id="footer" className="siteFooter"><div className="footerIntro"><span className="eyebrow">KEEP EXPLORING</span><h2>Find the title, then press play.</h2></div><div className="footerColumns"><div><span className="footerLabel">Links</span><FooterLinks items={links} /></div><div><span className="footerLabel">Support</span><FooterLinks items={support} /></div></div><div className="footerBottom"><span>Copyright &copy; {new Date().getFullYear()} <a href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer">Ashish Ranjan</a></span><button type="button" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Go to top"><FiArrowUp /></button></div></footer>
+        <footer id="footer" className="siteFooter"><div className="footerIntro"><span className="eyebrow">KEEP EXPLORING</span><h2>Find the title, then press play.</h2></div><div className="footerColumns"><div><span className="footerLabel">Links</span><FooterLinks items={links} /></div><div><span className="footerLabel">Support</span><FooterLinks items={support} /></div></div><div className="footerBottom"><span>Copyright &copy; {new Date().getFullYear()} <a href="https://www.ashishranjan.net/" target="_blank" rel="noopener noreferrer">Ashish Ranjan</a></span><button type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })} aria-label="Go to top"><FiArrowUp /></button></div></footer>
         <ToastContainer position="bottom-right" theme="dark" autoClose={2800} newestOnTop closeOnClick pauseOnFocusLoss pauseOnHover draggable limit={3} />
     </div>;
 };
